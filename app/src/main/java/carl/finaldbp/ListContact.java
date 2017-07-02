@@ -58,8 +58,8 @@ public class ListContact extends AppCompatActivity {
 
 
         //setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, presidents));
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, presidents);
+        adapter = new ContactItemAdapter(this,
+                android.R.layout.simple_list_item_1, contactos);
 
         FloatingActionButton prueba = (FloatingActionButton)findViewById(R.id.floatingActionButton5);
         final ListView lv = (ListView) findViewById(R.id.list);
