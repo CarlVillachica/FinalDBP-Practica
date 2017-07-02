@@ -31,6 +31,9 @@ public class ListContact extends AppCompatActivity {
             "George W. Bush",
             "Barack Obama"
     };
+    private ListView listView;
+    private List<ContactItem> contactItems;
+    private ArrayAdapter<ContactItem> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +41,13 @@ public class ListContact extends AppCompatActivity {
         setContentView(R.layout.activity_list_contact);
         ContentMessageProvider db = new ContentMessageProvider (this);
 
+        contactItems = new ArrayList<>();
         Cursor c = db.getTodosContactos();
         List<ContactItem> contactos = new ArrayList<>();
+        listView = (ListView) findViewById(R.id.list);
+
+        adapter = new ContactItemAdapter(this, R.layout.item_contact_item, contactItems);
+        listView.setAdapter(adapter);
 
         while (c.moveToNext()){
             String nombre = c.getString(c.getColumnIndex("nombre"));
