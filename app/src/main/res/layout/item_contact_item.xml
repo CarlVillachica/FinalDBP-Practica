@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="false"
+    android:clickable="false"
+    android:focusable="false">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
         android:layout_height="match_parent">
+
 
 
         <TextView
             android:id="@+id/txt_msg1996"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="66dp"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+            android:focusable="false"
 
             android:padding="5dp"
             android:layout_marginTop="15dp"
-            android:textColor="@android:color/holo_blue_dark" />
+            android:textSize="20dp"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 </RelativeLayout>

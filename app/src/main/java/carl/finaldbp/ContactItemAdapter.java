@@ -5,13 +5,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactItemAdapter extends ArrayAdapter<ContactItem> {
+public class ContactItemAdapter extends ArrayAdapter<ContactItem>  {
     private Activity activity1;
     private List<ContactItem> contact;
 
@@ -44,17 +46,15 @@ public class ContactItemAdapter extends ArrayAdapter<ContactItem> {
         return convertView;
     }
     @Override
-    public int getViewTypeCount() {
-        // return the total number of view types. this value should never change
-        // at runtime
-        return 2;
+    public int getCount() {
+        return contact.size();
     }
 
     @Override
-    public int getItemViewType(int position) {
-        // return a value between 0 and (getViewTypeCount - 1)
-        return position % 2;
+    public long getItemId(int position) {
+        return position;
     }
+
 
     public static class ViewHolder {
         private TextView msg;

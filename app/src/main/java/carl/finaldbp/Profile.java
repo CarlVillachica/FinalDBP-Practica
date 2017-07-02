@@ -15,14 +15,14 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final String s=getIntent().getExtras().getString("ID");
+        //final String s=getIntent().getExtras().getString("ID");
 
         setContentView(R.layout.activity_profile);
 
 
-        TextView nombre =(TextView) findViewById(R.id.user_profile_name);
+        //TextView nombre =(TextView) findViewById(R.id.user_profile_name);
         ImageView prueba = (ImageView) findViewById(R.id.eliminar);
-        nombre.setText(s);
+        //nombre.setText(s);
 
 
         prueba.setOnClickListener(new View.OnClickListener() {
