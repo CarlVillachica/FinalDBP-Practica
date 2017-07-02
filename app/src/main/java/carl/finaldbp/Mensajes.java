@@ -1,6 +1,7 @@
 package carl.finaldbp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class Mensajes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final String s=getIntent().getExtras().getString("ID");
+
+        final int idContacto = getIntent().getExtras().getInt("id");
         setTitle(s);
         setContentView(R.layout.activity_mensajes);
 
@@ -36,8 +40,16 @@ public class Mensajes extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_msg);
         btnSend = findViewById(R.id.button);
         btnProfile = findViewById(R.id.profile);
+        final ContentMessageProvider db = new ContentMessageProvider(this);
 
         editText = (EditText) findViewById(R.id.editTextNum);
+
+        Cursor c  = db.getMensajeContacto(idContacto);
+        while (c.moveToNext()){
+            String mensaje = c.getString(c.getColumnIndex("mensaje"))+"\n "+c.getString(c.getColumnIndex("fecha"));
+            Message chatMessage = new Message(mensaje, !isMine);
+            chatMessages.add(chatMessage);
+        }
 
         //set ListView adapter first
         adapter = new MessageAdapter(this, R.layout.item_recieve, chatMessages);
@@ -52,6 +64,8 @@ public class Mensajes extends AppCompatActivity {
                 } else {
                     //add message to list
                     Message chatMessage = new Message(editText.getText().toString(), isMine);
+                    String S = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis());
+                    db.insertMensajes(idContacto,editText.getText().toString().trim(),S);
                     chatMessages.add(chatMessage);
                     adapter.notifyDataSetChanged();
                     editText.setText("");

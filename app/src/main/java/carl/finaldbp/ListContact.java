@@ -66,10 +66,13 @@ public class ListContact extends AppCompatActivity {
                 // ListView Clicked item value
                 //String  itemValue    = (String) listView.getItemAtPosition(position);
 
-                String itemValue = contactItems.get(position).getNombre();
+                String name = contactItems.get(position).getNombre();
+                int _id =  contactItems.get(position).getIdContact();
 
                 Intent startIntent = new Intent(ListContact.this, Mensajes.class);
-                startIntent.putExtra("ID",itemValue);
+                startIntent.putExtra("ID",name);
+                startIntent.putExtra("id",_id);
+
                 startActivity(startIntent);
 
             }
