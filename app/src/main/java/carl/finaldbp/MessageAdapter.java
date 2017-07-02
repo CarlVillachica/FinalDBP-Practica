@@ -65,7 +65,7 @@ public class MessageAdapter extends ArrayAdapter<Message> {
         return position % 2;
     }
 
-    private class ViewHolder {
+    public class ViewHolder {
         private TextView msg;
 
         public ViewHolder(View v) {

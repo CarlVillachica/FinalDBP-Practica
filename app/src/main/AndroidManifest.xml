@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".Mensajes"></activity>
         <activity android:name=".Profile"></activity>
+        <activity android:name=".GetMessage"></activity>
+
     </application>
 
 </manifest>
