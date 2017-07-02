@@ -27,8 +27,8 @@ public class Mensajes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //final String s=getIntent().getExtras().getString("ID");
-        //setTitle(s);
+        final String s=getIntent().getExtras().getString("ID");
+        setTitle(s);
         setContentView(R.layout.activity_mensajes);
 
         chatMessages = new ArrayList<>();
@@ -69,7 +69,7 @@ public class Mensajes extends AppCompatActivity {
 
             public void onClick(View v){
             Intent intent = new Intent(Mensajes.this, Profile.class);
-            //intent.putExtra("ID",s);
+            intent.putExtra("ID",s);
             startActivity(intent);
         }
                                       }
